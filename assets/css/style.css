@@ -1,0 +1,150 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+  }
+  
+  .card-container {
+    perspective: 1000px; /* 3D効果のための遠近感 */
+  }
+  
+.card {
+    width: 500px;
+    height: 280px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    cursor: pointer;
+}
+  
+  .card.flipped {
+    transform: rotateY(180deg); /* クリックで回転 */
+  }
+  
+  .front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+  }
+  
+  .front {
+    background-color: #FBCF33;
+    color: white;
+  }
+
+  .front h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+  
+  .front p {
+    font-size: 12px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* h1 animation */
+  h1 {
+    position: relative;
+    display: inline-block;
+  }
+  
+  h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* h1タグの下に表示 */
+    width: 100%;
+    height: 2px; /* 下線の太さ */
+    background-color: #fff; /* 下線の色 */
+    transform: scaleX(1); /* 初期状態はフルの下線 */
+    transform-origin: left; /* 左端から伸びるように設定 */
+    transition: transform 0.5s ease; /* アニメーションの速度とイージング */
+  }
+  
+  h1:hover::after {
+    transform: scaleX(0); /* ホバー時に下線が左から右に縮小 */
+  }
+  
+  .front p{
+    white-space: nowrap;
+  }
+
+  .front img{
+    padding-right: 50px;
+    width: 200px;
+  }
+
+  .front a{
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .back {
+    background-color: #78c7c9;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .back h1{
+    white-space: nowrap;
+  }
+
+  .back p{
+    padding-right: 200px;
+  }
+
+  .back img{
+
+    width: 200px;
+  }
+
+/* SNSアイコンのスタイル */
+.social-icons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #a5a5a5; /* アイコンをホバーした際の色 */
+}
+  
+  /* モバイル対応 */
+  @media (max-width: 600px) {
+    .card {
+      width: 400px;
+      height: 280px;
+    }
+  
+    h1 {
+      font-size: 18px;
+    }
+  
+    p {
+      font-size: 12px;
+    }
+
+    .social-icons a {
+      font-size: 18px;
+    }
+  }
+  
